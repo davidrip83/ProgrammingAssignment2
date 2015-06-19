@@ -26,13 +26,13 @@ makeCacheMatrix <- function(x = matrix()) { ## input is a matrix x
 
 cacheSolve <- function(x, ...) {
     ## Return a matrix that is the inverse of 'x'
-    i <- x$getinverse() ## replaced mean with inverse
-    if(!is.null(i)) {
+    i <- x$getinverse() ## get the inverse
+    if(!is.null(i)) { ## if the inverse doesn't exist get the cached inverse
         message("getting cached data")
-        return(i) ## replaced m with i
+        return(i) ## return the inverse from the cache
     }
-    data <- x$get()
-    i <- solve(data, ...) ## replaced m with i
-    x$setinverse(i) ## replaced m with i
+    data <- x$get() 
+    i <- solve(data, ...) ## calculate the inverse of data
+    x$setinverse(i) ## set the inverse equal to i
     i
 }
